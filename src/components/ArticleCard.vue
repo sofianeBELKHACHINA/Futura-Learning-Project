@@ -2,6 +2,14 @@
 const props = defineProps({
   articleInfos: Object,
 })
+
+const categoriesColors = {
+  sciences: ['#be80ff', '#6325ff'],
+  sante: ['#ff6b9f', '#ff4e52'],
+  planete: ['#9fcb5c', '#069849'],
+  maison: ['#fa9761', '#ff5957'],
+  tech: ['#49adfa', '#2a3df7'],
+}
 </script>
 
 <template>
@@ -37,7 +45,11 @@ span {
 
 span:first-child {
   font-weight: bold;
-  background: linear-gradient(45deg, #be80ff, #6325ff);
+  background: linear-gradient(
+    45deg,
+    v-bind('categoriesColors[articleInfos.category][0]'),
+    v-bind('categoriesColors[articleInfos.category][1]')
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
